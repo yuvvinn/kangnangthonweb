@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주변을 둘러보는 중 ...</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="ai-recommendation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html" style="text-decoration: none;">
+                <span class="header-title">AI<span class="highlight-r">RRR</span>OOM</span>
+            </a>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="header-icon"><i class="fas fa-home"></i>홈으로</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div id="loading-screen">
+            <h1>주변을 둘러보는 중... 
+                <div class="eye">
+                    <div class="eyeball"></div>
+                </div>
+            </h1>
+            <div class="loading-spinner"></div>
+        </div>
+
+        <div id="content" style="display: none;">
+            <h1 class="content-title">강냉이님을 위한 공간을 발견하였습니다!</h1>
+            
+            <div class="recommendation-message">
+                <p>강냉이님을 위해 발견한 곳은 총 3곳입니다.</p>
+            </div>
+
+            <div class="room-cards">
+                <div class="room-card">
+                    <h3>샬롬관 401호</h3>
+                    <div class="room-info">
+                        <p><i class="fas fa-clock"></i> 현재 상태: 사용 가능</p>
+                    </div>
+                    <button onclick="location.href='rooms.html'" class="reserve-btn">예약하기</button>
+                </div>
+
+                <div class="room-card">
+                    <h3>이공관 203호</h3>
+                    <div class="room-info">
+                        <p><i class="fas fa-clock"></i> 현재 상태: 사용 가능</p>
+                    </div>
+                    <button onclick="location.href='rooms.html'" class="reserve-btn">예약하기</button>
+                </div>
+
+                <div class="room-card">
+                    <h3>천은관 304호</h3>
+                    <div class="room-info">
+                        <p><i class="fas fa-clock"></i> 현재 상태: 사용 가능</p>
+                    </div>
+                    <button onclick="location.href='rooms.html'" class="reserve-btn">예약하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 페이지 로드 시 실행
+        window.onload = function() {
+            // 5초 후에 실행
+            setTimeout(function() {
+                // 로딩 화면을 페이드 아웃
+                document.getElementById('loading-screen').style.opacity = '0';
+                
+                // 로딩 화면이 완전히 사라진 후 컨텐츠 표시
+                setTimeout(function() {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                    
+                    // 컨텐츠 페이드 인
+                    setTimeout(function() {
+                        document.getElementById('content').style.opacity = '1';
+                    }, 100);
+                }, 500); // 페이드 아웃 애니메이션이 완료되는 시간
+            }, 5000); // 5초 대기
+        };
+    </script>
+</body>
+</html> 

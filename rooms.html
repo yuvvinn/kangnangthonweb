@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강의실 조회/예약</title>
+    <link rel="stylesheet" href="rooms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 필터 섹션 에 추가 -->
+        <div class="search-guide">
+            <h2>원하는 강의실을 찾아주세요.</h2>
+        </div>
+
+        <!-- 필터 섹션 -->
+        <div class="filter-section">
+            <div class="filter-item">
+                <i class="fas fa-calendar"></i>
+                <input type="date" class="filter-input">
+            </div>
+            <div class="filter-item">
+                <i class="fas fa-building"></i>
+                <select class="filter-input">
+                    <option value="">건물 선택</option>
+                    <option value="인문대학">샬롬관</option>
+                    <option value="인문대학">천은관</option>
+                    <option value="공과대학">이공관</option>
+                    <option value="공과대학">경천관</option>
+                    <option value="인문대학">인사관</option>
+                    <option value="예술대학">예술관</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <i class="fas fa-clock"></i>
+                <select class="filter-input">
+                    <option value="">시간 선택</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <!-- 추가 시간대 -->
+                </select>
+            </div>
+            <button class="filter-button">
+                <i class="fas fa-search"></i> 검색
+            </button>
+        </div>
+
+        <!-- 필터 섹션 아래, 카드 그리드 위에 추가 -->
+        <div class="available-rooms-info">
+            <span class="user-name">강냉이</span> 님이 사용할 수 있는 강의실은 
+            <span class="room-count">1</span>개입니다
+        </div>
+
+        <!-- 강의실 카드 그리드 -->
+        <div class="room-grid">
+            <!-- 더미 카드 데이터 -->
+            <div class="room-card">
+                <div class="room-header">
+                    <h3>이공관 104호</h3>
+                    <span class="room-status available">사용가능</span>
+                </div>
+                <div class="room-info">
+                    <p><i class="fas fa-users"></i> 수용인원: 40명</p>
+                    <p><i class="fas fa-laptop"></i> 컴퓨터 있음</p>
+                    <p><i class="fas fa-clock"></i> 09:00 - 18:00</p>
+                </div>
+                <button class="reserve-btn" onclick="openModal()">예약하기</button>
+            </div>
+
+            <!-- 더미 카드 복사 -->
+            <div class="room-card">
+                <div class="room-header">
+                    <h3>천은관 203호</h3>
+                    <span class="room-status unavailable">사용중</span>
+                </div>
+                <div class="room-info">
+                    <p><i class="fas fa-users"></i> 수용인원: 30명</p>
+                    <p><i class="fas fa-laptop"></i> 컴퓨터 없음</p>
+                    <p><i class="fas fa-clock"></i> 09:00 - 18:00</p>
+                </div>
+                <button class="reserve-btn" disabled>예약불가</button>
+            </div>
+
+            <!-- 추가 더미 카드들... -->
+        </div>
+    </div>
+
+    <!-- 모달 창 추가 -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <h3>예약 확인</h3>
+            <p>선택하신 강의실을 예약하시겠습니까?</p>
+            <div class="modal-buttons">
+                <button onclick="confirmReservation()" class="confirm-btn">예</button>
+                <button onclick="closeModal()" class="cancel-btn">아니오</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 추가 -->
+    <script>
+        function openModal() {
+            document.getElementById('reservationModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('reservationModal').style.display = 'none';
+        }
+
+        function confirmReservation() {
+            alert('예약이 완료되었습니다.');
+            closeModal();
+        }
+
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('reservationModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
